@@ -1,58 +1,99 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+✈️ SkyLinee — Aplikasi Pemesanan Tiket Pesawat Berbasis Web
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+SkyLinee adalah aplikasi pemesanan tiket pesawat domestik berbasis web yang dirancang untuk mempermudah pengguna dalam mencari jadwal penerbangan, memantau ketersediaan kursi secara real-time, serta melakukan pemesanan tiket secara cepat, aman, dan efisien.
 
-## About Laravel
+Aplikasi ini dikembangkan menggunakan Laravel Framework dengan pola arsitektur MVC (Model–View–Controller) dan didukung Tailwind CSS untuk menghasilkan antarmuka yang modern, responsif, dan nyaman digunakan.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+🚀 Fitur Utama
 
-## Learning Laravel
+1. Autentikasi Pengguna
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Registrasi dan Login Akun
+Menyediakan sistem autentikasi untuk menjaga keamanan data pengguna menggunakan mekanisme keamanan bawaan Laravel.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Middleware Authentication (auth)
+Membatasi akses ke halaman dashboard dan fitur pemesanan hanya untuk pengguna yang telah melakukan login.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
 
-## Agentic Development
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+2. Pencarian Penerbangan (Sisi Publik)
 
-php artisan boost:install
-```
+Pencarian Penerbangan Dinamis
+Pengguna dapat mencari penerbangan berdasarkan bandara asal, tujuan, dan tanggal keberangkatan.
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Informasi Ketersediaan Real-Time
+Menampilkan jadwal penerbangan, nomor penerbangan, sisa kursi tersedia, dan estimasi harga secara transparan.
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. Dashboard Transaksi Pengguna (Sisi Privat)
 
-## Security Vulnerabilities
+Riwayat Pemesanan
+Menampilkan daftar seluruh transaksi pemesanan lengkap dengan kode booking unik (BK-YYYYMMDD-XXXX).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Boarding Pass Digital & QR Code
+Sistem menghasilkan tiket elektronik berupa boarding pass digital yang dilengkapi QR Code untuk proses verifikasi.
 
-## License
+Status Transaksi
+Menampilkan status pembayaran dan pemesanan secara dinamis seperti:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+PENDING
+
+SUCCESS
+
+
+
+
+---
+
+🛠️ Teknologi yang Digunakan
+
+Komponen	Teknologi
+
+Backend	Laravel 11 / PHP
+Frontend	Tailwind CSS v4
+Database	SQLite / MySQL
+Arsitektur	MVC (Model–View–Controller)
+UI & Ikon	Font Awesome, Google Fonts (Plus Jakarta Sans & Inter)
+
+
+
+---
+
+📁 Struktur Database
+
+Aplikasi menggunakan sistem database relasional dengan 5 tabel utama:
+
+1. users
+
+Menyimpan data akun pengguna seperti nama, email, dan password.
+
+2. airports
+
+Menyimpan data master bandara seperti nama kota dan kode bandara (contoh: CGK, UPG, DPS).
+
+3. flights
+
+Menyimpan informasi jadwal penerbangan, nomor penerbangan, relasi bandara asal–tujuan, kapasitas kursi, waktu keberangkatan, waktu kedatangan, serta harga tiket.
+
+4. bookings
+
+Menyimpan data transaksi pemesanan yang menghubungkan pengguna dengan penerbangan menggunakan kode booking unik.
+
+5. payments
+
+Mengelola data pembayaran dan status transaksi untuk setiap pemesanan.
+
+
+---
+
+🎯 Tujuan Pengembangan
+
+SkyLinee dibuat untuk memberikan pengalaman pemesanan tiket pesawat yang mudah, cepat, modern, dan terintegrasi dalam satu platform berbasis web.
